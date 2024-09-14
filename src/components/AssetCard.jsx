@@ -9,9 +9,9 @@ function Model3D({ url }) {
 
 const AssetCard = ({ asset }) => {
   return (
-    <div className='bg-[var(--color-primary)] w-[300px] rounded-2xl p-0 border-solid border-2 border-[var(--color-tertiary)]'>
+    <div className='bg-[var(--color-pre-primary)] w-[300px] rounded-2xl p-0 border-[var(--color-tertiary)]'>
 
-      <div className="relative w-full overflow-hidden rounded-t-2xl h-52 bg-gradient-to-bl from-[var(--color-primary)]  to-[var(--color-tertiary)]">
+      <div className="relative w-full overflow-hidden rounded-t-2xl h-52 bg-gradient-to-bl from-[var(--color-tertiary)]  to-[var(--color-accent)]">
         <Canvas camera={{ position: [0, 0, 2.5], fov: 50 }}>
           <ambientLight intensity={1} />
           <spotLight position={[10, 10, 10]} angle={0} penumbra={1} />

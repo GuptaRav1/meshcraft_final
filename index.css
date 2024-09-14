@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #010812;
-  --color-secondary: #76aef9;
-  --color-background: #090304;
-  --color-text: #010202;
-  --color-accent: #f5a435;
+  --color-primary: hsl(193, 50%, 10%);
+  --color-pre-primary: hsl(193, 50%, 15%);
+  --color-secondary: hsl(193, 50%, 90%);
+  --color-tertiary: hsl(253, 80%, 80%);
+  --color-accent: hsl(133, 80%, 80%);
 }
 
 li {
