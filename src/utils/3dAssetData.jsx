@@ -1,0 +1,8 @@
+export const assets = [
+  { id: 1, name: "Realistic Shark", price: 79.99, category: "high poly", format: "glTF", url: "public/shiba (1)/scene.gltf", description: "High-quality 3D model of a realistic shark. Perfect for underwater scenes.", hashtags: ["#shark", "#3dmodel", "#underwater", "#realistic"] },
+  { id: 2, name: "Futuristic Spaceship", price: 129.99, category: "low poly", format: "glTF", url: "public/shiba (2)/scene.gltf", description: "Detailed model of a futuristic spaceship for sci-fi games and animations.", hashtags: ["#spaceship", "#scifi", "#3dmodel", "#futuristic"] },
+  { id: 3, name: "Metalhead Skull", price: 1219.99, category: "character", format: "glTF", url: "public/shiba (3)/scene.gltf", description: "Detailed model of a futuristic spaceship for sci-fi games and animations.", hashtags: ["#spaceship", "#scifi", "#3dmodel", "#futuristic"] },
+  { id: 4, name: "Cute Shiba Inu", price: 12.99, category: "character", format: "glTF", url: "public/shiba (4)/scene.gltf", description: "Detailed model of a futuristic spaceship for sci-fi games and animations.", hashtags: ["#spaceship", "#scifi", "#3dmodel", "#futuristic"] },
+  { id: 5, name: "Realistic Shark", price: 79.99, category: "landscape", format: "glTF", url: "public/shiba (5)/scene.gltf", description: "High-quality 3D model of a realistic shark. Perfect for underwater scenes.", hashtags: ["#shark", "#3dmodel", "#underwater", "#realistic"] },
+  { id: 6, name: "Futuristic Spaceship", price: 129.99, category: "landscape", format: "glTF", url: "public/shiba (6)/scene.gltf", description: "Detailed model of a futuristic spaceship for sci-fi games and animations.", hashtags: ["#spaceship", "#scifi", "#3dmodel", "#futuristic"] },
+];
