@@ -10,6 +10,8 @@ const SideModal = () => {
 
   return (
     <Modal
+
+
       isOpen={sideModal.isOpen}
       onClose={sideModal.onClose}
     />
