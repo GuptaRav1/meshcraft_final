@@ -1,159 +1,262 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+// Keyframes for continuous gradient movement
+const moveGradient = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+`;
+
+// Wrapper for the container with the alternating yellow and green moving border
+export const BorderWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  padding: 3px;
+  border-radius: 10px;  // Match the container's corner radius
+
+  // Create a gradient with alternating yellow and green colors
+  background: linear-gradient(90deg, yellow, green, yellow, green);
+  background-size: 200% 200%;  // Ensure the gradient is large enough to animate smoothly
+  animation: ${moveGradient} 4s linear infinite;  // Animate the gradient moving continuously
+
+  // Ensuring the border follows the correct edges and radius
+  border-radius: 10px;
+  border: 2px solid transparent;  // Transparent border so that only the moving gradient is visible
+`;
 
 export const Container = styled.div`
-background-color: #fff;
-border-radius: 10px;
-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-position: relative;
-overflow: hidden;
-width: 678px;
-max-width: 100%;
-min-height: 400px;
+  background-color: #fff;
+  border-radius: 10px;  // Match the border wrapper's radius
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 678px;
+  max-width: 100%;
+  min-height: 400px;
+  z-index: 1;  // Ensure content is above the border animation
 `;
 
+// SignUpContainer
 export const SignUpContainer = styled.div`
- position: absolute;
- top: 0;
- height: 100%;
- transition: all 0.6s ease-in-out;
- left: 0;
- width: 50%;
- opacity: 0;
- z-index: 1;
- ${props => props.signinIn !== true ? `
-   transform: translateX(100%);
-   opacity: 1;
-   z-index: 5;
- `
-    : null}
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+  ${props => props.signinIn !== true ? `
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+  ` : null}
 `;
 
-
+// SignInContainer
 export const SignInContainer = styled.div`
-position: absolute;
-top: 0;
-height: 100%;
-transition: all 0.6s ease-in-out;
-left: 0;
-width: 50%;
-z-index: 2;
-${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)}
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  left: 0;
+  width: 50%;
+  z-index: 2;
+  ${props => (props.signinIn !== true ? `transform: translateX(100%); opacity: 0;` : `transform: translateX(0); opacity: 1;`)}
 `;
 
+// Form
 export const Form = styled.form`
-background-color: #ffffff;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-padding: 0 50px;
-height: 100%;
-text-align: center;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+  transition: all 0.6s ease-in-out;
 `;
 
+// Title
 export const Title = styled.h1`
-font-weight: bold;
-margin: 0;
+  font-weight: bold;
+  margin: 0;
+  transition: all 0.6s ease-in-out;
 `;
 
+// InputContainer
+export const InputContainer = styled.div`
+  position: relative;
+  margin: 10px 0;
+  width: 100%;
+`;
+
+// Input field with underline animation and floating label
 export const Input = styled.input`
-background-color: #eee;
-border: none;
-padding: 12px 15px;
-margin: 8px 0;
-width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #ff4b2b;
+  }
+
+  &:focus + label {
+    top: -20px;
+    font-size: 12px;
+    color: #ff4b2b;
+  }
+
+  &:not(:placeholder-shown) + label {
+    top: -20px;
+    font-size: 12px;
+    color: #ff4b2b;
+  }
 `;
 
+// InputLabel 
+export const InputLabel = styled.label`
+  position: absolute;
+  top: 12px;
+  left: 0;
+  font-size: 16px;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+`;
 
+// Underline effect
+export const Underline = styled.span`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #ff4b2b;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+
+  ${Input}:focus ~ & {
+    transform: scaleX(1);
+  }
+`;
+
+// Button animations
 export const Button = styled.button`
-   border-radius: 20px;
-   border: 1px solid #ff4b2b;
-   background-color: #ff4b2b;
-   color: #ffffff;
-   font-size: 12px;
-   font-weight: bold;
-   padding: 12px 45px;
-   letter-spacing: 1px;
-   text-transform: uppercase;
-   transition: transform 80ms ease-in;
-   &:active{
-       transform: scale(0.95);
-   }
-   &:focus {
-       outline: none;
-   }
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: #ff6b4b;
+  }
 `;
+
 export const GhostButton = styled(Button)`
-background-color: transparent;
-border-color: #ffffff;
+  background-color: transparent;
+  border-color: #ffffff;
 `;
 
 export const Anchor = styled.a`
-color: #333;
-font-size: 14px;
-text-decoration: none;
-margin: 15px 0;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
 `;
+
+// OverlayContainer
 export const OverlayContainer = styled.div`
-position: absolute;
-top: 0;
-left: 50%;
-width: 50%;
-height: 100%;
-overflow: hidden;
-transition: transform 0.6s ease-in-out;
-z-index: 100;
-${props =>
-    props.signinIn !== true ? `transform: translateX(-100%);` : null}
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+  ${props =>
+      props.signinIn !== true ? `transform: translateX(-100%);` : `transform: translateX(0);`}
 `;
 
+// Overlay 
 export const Overlay = styled.div`
-background: #ff416c;
-background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-background: linear-gradient(to right, #ff4b2b, #ff416c);
-background-repeat: no-repeat;
-background-size: cover;
-background-position: 0 0;
-color: #ffffff;
-position: relative;
-left: -100%;
-height: 100%;
-width: 200%;
-transform: translateX(0);
-transition: transform 0.6s ease-in-out;
-${props => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+  ${props => (props.signinIn !== true ? `transform: translateX(50%);` : `transform: translateX(0);`)}
 `;
 
+// OverlayPanel 
 export const OverlayPanel = styled.div`
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    text-align: center;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
 `;
 
+// LeftOverlayPanel 
 export const LeftOverlayPanel = styled(OverlayPanel)`
   transform: translateX(-20%);
   ${props => props.signinIn !== true ? `transform: translateX(0);` : null}
 `;
 
+// RightOverlayPanel 
 export const RightOverlayPanel = styled(OverlayPanel)`
-    right: 0;
-    transform: translateX(0);
-    ${props => props.signinIn !== true ? `transform: translateX(20%);` : null}
+  right: 0;
+  transform: translateX(0);
+  ${props => props.signinIn !== true ? `transform: translateX(20%);` : null}
 `;
 
+// Paragraph
 export const Paragraph = styled.p`
-font-size: 14px;
+  font-size: 14px;
   font-weight: 100;
   line-height: 20px;
   letter-spacing: 0.5px;
-  margin: 20px 0 30px
+  margin: 20px 0 30px;
+  transition: all 0.3s ease-in-out;
 `;
